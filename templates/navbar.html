@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-secondary">
+  <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+    <a class="navbar-brand" href="{{ url_for('index') }}">My Profile</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('register') }}">Add a User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('depositor_rec') }}">Receive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('search') }}">Search</a>
+          </li>
+        {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('logout') }}">Logout</a>
+          </li>
+          <li class="nav-item dropdown ">
+          <a class="nav-link active dropdown-toggle" id="navbarDarkDropdownMenuLink"
+             role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            User Profile
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark " aria-labelledby="navbarDarkDropdownMenuLink">
+            <li><a class="dropdown-item" >Username:  {{current_user.username}}</a></li>
+            <li><a class="dropdown-item" >Role:  {{ current_user.role_id}}</a></li>
+            <li><a class="dropdown-item" >Email:  {{ current_user.email}}</a></li>
+            <li><a class="dropdown-item" >Phone: {{ current_user.phone_no}}</a></li>
+          </ul>
+
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('login') }}">Login</a>
+          </li>
+        {% endif %}
+
+      </ul>
+    </div>
+        </ul>
+      </ul>
+    </div>
+  </div>
+</nav>

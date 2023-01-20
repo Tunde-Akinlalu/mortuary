@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Update Record of {{ deceased.first_name | title }} {{ deceased.last_name| title }}</h1>
+    <br/>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="row g-3">
+            <div class="col-md">
+                    {{ form.first_name.label() }}
+                    {{ form.first_name(class="form-control", value=deceased.first_name) }}
+
+            </div>
+            <div class="col-md">
+                    {{ form.last_name.label() }}
+                    {{ form.last_name(class="form-control", value=deceased.last_name) }}
+
+            </div>
+            <div class="col-md">
+                    {{ form.gender.label() }}
+                    {{ form.gender(class="form-control", value=deceased.gender) }}
+
+            </div>
+        </div>
+        <br/>
+        <div class="row g-4">
+            <div class="col-md">
+                    {{ form.received_by.label() }}
+                    {{ form.received_by(class="form-control", value=deceased.received_by) }}
+            </div>
+            <div class="col-md">
+                    {{ form.deposited_by.label() }}
+                    {{ form.deposited_by(class="form-control", value=deceased.deposited_by) }}
+            </div>
+            <div class="col-md">
+                    {{ form.deposited_in.label() }}
+                    {{ form.deposited_in(class="form-control", value=deceased.deposited_in) }}
+            </div>
+            <div class="col-md">
+                    {{ form.ward.label() }}
+                    {{ form.ward(class="form-control", value=deceased.ward) }}
+            </div>
+        </div>
+        <br/>
+            <div class="d-grid gap-4 col-2 mx-auto">
+            {{ form.submit(class="btn btn-primary") }}
+            </div>
+        <br/><br/><br/>
+    <form/>
+<br/><br/>
+ {% endblock %}

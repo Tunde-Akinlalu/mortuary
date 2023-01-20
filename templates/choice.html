@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Depositor Record</h1>
+    <br/>
+    <form method="POST">
+            {{ form.hidden_tag() }}
+        <div class="d-grid gap-4 col-2 mx-auto">
+            <div class="col-md">
+                    {{ form.choice.label() }}
+                    {{ form.choice(class="form-control") }}
+            </div>
+        </div>
+
+        <br/>
+            <div class="d-grid gap-4 col-2 mx-auto">
+            {{ form.submit(class="btn btn-primary") }}
+            </div>
+        <br/><br/><br/>
+        </div>
+    <form/>
+<br/><br/>
+
+           {% endblock %}

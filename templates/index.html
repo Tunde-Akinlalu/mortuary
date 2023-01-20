@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+{% block title%} {{ title }} {% endblock %}
+{% block content %}
+
+<br/>
+  <div class="row mt-4">
+       <div class="col-lg-5 col-md-6 m-auto card p-4 border-info">
+          <h6 class="card-header" style="text-align: left; color: black; ">My Profile</h6>
+              <div class="container py-0.5 text-left">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Username:  {{ current_user.username}}</li>
+                    <li class="list-group-item">Role:  {{current_user.role_id}}</li>
+                    <li class="list-group-item">Email: {{ current_user.email}}</li>
+                    <li class="list-group-item">Phone No: {{ current_user.phone_no}}</li>
+                  </ul>
+              </div>
+       </div>
+  </div>
+</div>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+
+
+</div>
+
+{% endblock %}

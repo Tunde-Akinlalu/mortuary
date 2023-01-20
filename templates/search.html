@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <a class="btn btn-outline-secondary btn-lg" href="{{ url_for('index') }}" role="button">Home</a>
+    <a class="btn btn-outline-primary btn-lg" href="{{ url_for('depositor_rec') }}">Receive a Body</a>
+</div>
+
+<div class="container">
+    <p><h2>Search for a Body</h2></p>
+    <div class="row">
+       <div class="col-4">
+       <strong>Searched Item : {{ tag}}</strong>
+       </div>
+        <div class="col-8">
+         <form action="" method="post" autocomplete="off">
+          <div class="row">
+           <div class="col-14">
+           <input type="text" class="form-control" name="tag" id="tag"
+                  placeholder="Search by First Name" size="40"/>
+           </div>
+           <div class="col-3" align="left">
+           <input type="submit" value="Search" class="form-control btn btn-primary " name="">
+           </div>
+              <br><br><br>
+          </form>
+        </div>
+       </div>
+    </div>
+<br>
+<div class="row">
+<div class="col-16">
+ <table id="example" class="table table-striped table-bordered" style="width:100%">
+  <thead>
+   <tr>
+
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Deposited By</th>
+        <th>Date Deposited</th>
+
+
+   </tr>
+  </thead>
+  <tbody>
+ {% for deceased in deceased.items %}
+    <tr>
+        <td>{{deceased["id"]}}</td>
+        <td>
+                     <a href="{{ url_for('deceased', deceased_id=deceased.id)}}">
+                         {{ deceased.first_name | title }} {{ deceased.last_name | title}}
+                     </a>
+        <td/>
+        <td>{{ deceased.deposited_by | title }}</td>
+        <td>{{ deceased.date_deposited | title }}</td>
+
+
+
+
+    </tr>
+{% endfor %}
+ </tbody>
+</table>
+ <nav aria-label="Page navigation example">
+   <ul class="pagination">
+        {% if deceased.has_prev %}
+           <li class="page-item"> <a class="page-link" href="{{ url_for('search', page=deceased.prev_num) }}">Previous</a></li>
+        {% else %}
+            <li class="page-item"><a class="page-link btn disabled" href="#">Previous</a></li>
+        {% endif %}
+
+   {% for page in deceased.iter_pages(left_edge=3, right_edge=3) %}
+   {% if page %}
+
+   {% if page==deceased.page %}
+    <li class="page-item active"><a class="page-link" href="{{ url_for('search', page=page) }}">{{ page }}</a></li>
+   {% else %}
+    <li class="page-item"><a class="page-link" href="{{ url_for('search', page=page) }}">{{ page }}</a></li>
+   {% endif %}
+
+   {% else %}
+    <li class="page-item disabled" id="example_ellipsis"><a href="#" class="page-link">…</a></li>
+   {% endif %}
+   {% endfor %}
+
+            {% if deceased.has_next %}
+            <li class="page-item"> <a class="page-link" href="{{ url_for('search', page=deceased.next_num) }}">Next</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link btn disabled" href="#">Next</a></li>
+            {% endif %}
+
+   </ul>
+ </nav>
+</div>
+</div>
+</div>
+<style>
+table{
+    width:100%;
+    }
+#example_filter{
+    float:right;
+    }
+#example_paginate{
+    float:right;
+    }
+label {
+    display: inline-flex;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+
+    }
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #fff;
+    border-color: #dee2e6;
+
+</style>
+<script>
+function checkAll(bx) {
+    var cbs = document.getElementsByTagName('input');
+    for(var i=0; i < cbs.length; i++) {
+      if(cbs[i].type == 'checkbox') {
+      cbs[i].checked = bx.checked;
+    }
+}
+</script>
+
+ <div class="d-grid gap-2 col-6 mx-auto">
+    <a class="btn btn-outline-secondary btn-lg" href="{{ url_for('index') }}" role="button">Home</a>
+    <a class="btn btn-outline-primary btn-lg" href="{{ url_for('depositor_rec') }}">Receive</a>
+</div>
+
+
+
+
+ </body>
+
+{% endblock %}

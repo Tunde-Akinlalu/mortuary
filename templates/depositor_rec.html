@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Depositor Record</h1>
+    <br/>
+    <form method="POST">
+            {{ form.hidden_tag() }}
+        <div class="row g-3">
+            <div class="col-md">
+                    {{ form.first_name.label() }}
+                    {{ form.first_name(class="form-control") }}
+                    <div id="fnameHelp" class="form-text">Depositor's First Name.</div>
+            </div>
+            <div class="col-md">
+                    {{ form.last_name.label() }}
+                    {{ form.last_name(class="form-control") }}
+                    <div id="lnameHelp" class="form-text">Select patient's scheme.</div>
+            </div>
+            <div class="col-md">
+                    {{ form.phone_no.label() }}
+                    {{ form.phone_no(class="form-control") }}
+                     <div id="phoneHelp" class="form-text">Input Prescription.</div>
+            </div>
+        </div>
+        <br/>
+        <div class="row g-3">
+            <div class="col-md">
+                    {{ form.email.label() }}
+                    {{ form.email(class="form-control") }}
+                     <div id="emailHelp" class="form-text">Amount Paid.</div>
+            </div>
+            <div class="col-md">
+                    {{ form.address.label() }}
+                    {{ form.address(class="form-control") }}
+                     <div id="addressHelp" class="form-text">Add other Information here</div>
+            </div>
+        </div>
+        <br/>
+            <div class="d-grid gap-4 col-2 mx-auto">
+            {{ form.submit(class="btn btn-primary") }}
+            </div>
+        <br/><br/><br/>
+        </div>
+    <form/>
+<br/><br/>
+
+           {% endblock %}

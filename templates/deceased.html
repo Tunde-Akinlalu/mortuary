@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <span class="title">
+        <h1>{% block title %} {{ deceased.first_name | title }} {{ deceased.last_name | title }}
+            {% endblock %}</h1>
+    </span>
+<div class="content">
+            <div class="deceaseds">
+                <p><b>#{{ deceased.id }}</b></p><a href="{{ url_for('deceased', deceased_id=deceased.id)}}"></a>
+                <p>Full name: {{ deceased.first_name | title }} {{ deceased.last_name | title }}</p>
+                <p>Body brought by: {{ deceased.deposited_by }}</p>
+                <p>Gender: {{ deceased.gender }}</p>
+                <p>Receiving Staff: {{ deceased.received_by}}</p>
+                <p>Where body is stored: {{ deceased.deposited_in}}</p>
+                <p>Brought from: {{ deceased.ward }}</p>
+                <p>Date Brought in: {{ deceased.date_deposited }}</p>
+                <p>Date Discharged: {{ deceased.documented_by }}</p>
+            </div>
+    </div>
+
+<br>
+<div class="d-grid gap-2 col-6 mx-auto">
+    <a class="btn btn-outline-secondary btn-lg" href="{{ url_for('search') }}">Back to Search</a>
+    <a class="btn btn-outline-primary btn-lg" href="{{ url_for('edit', deceased_id=deceased.id) }}" \
+    role="button">Edit</a>
+    <a class="btn btn-outline-success btn-lg" href="{{ url_for('discharge', deceased_id=deceased.id) }}" \
+    role="button" onclick="return confirm('Are you sure you want to release this body?')">Discharge</a>
+    <a class="btn btn-outline-danger btn-lg" href="{{ url_for('delete', deceased_id=deceased.id) }}" \
+    role="button" onclick="return confirm('Are you sure you want to delete this entry?')">Delete</a>
+
+
+
+</div>
+
+<br><br><br>
+
+{% endblock %}
